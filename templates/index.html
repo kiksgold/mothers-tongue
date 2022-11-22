@@ -3,12 +3,8 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        <div class="site-heading">
-            <h3 class="site-heading my-4 mt-3 text-center"> Welcome to Mother's Tongue Blog </h3>
-            <p class="text-light-grey text-center">We are a community of yoruba language learners..! &nbsp
-            </p>
-        </div>
+    <h2 class="site-heading my-4 mt-3 text-center"> Welcome to Mother's Tongue Blog </h2>
+    <div class="row">         
         <!-- Blog Entries Column -->
             <div class="col-md-8 mt-3 left">
                 {% for post in post_list %}
@@ -29,7 +25,7 @@
                         <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
                             {{ post.number_of_likes }}</p>
                         <p class="card-text">{{post.excerpt|safe }}</p>
-                        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                 </div>    
             </div>
