@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Post
@@ -29,3 +30,12 @@ class PostDetail(View):
                 "liked": liked,
             },
         )
+
+
+def search(request):
+    # Define a function for search query
+    query = request.GET.get('query', '')
+
+    posts = Post.objects.filter(status=Post.ACTIVE).filter(Q(title__icontains=query) | Q(intro__icontains=query) | Q(body__icontains=query))
+
+    return render(request, 'blog/search.html', {'posts': posts, 'query': query})
