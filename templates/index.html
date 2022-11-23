@@ -10,13 +10,8 @@
                 {% for post in post_list %}
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="image-container">
-                            {% if "placeholder" in post.featured_image.url %}
-                            <img class="card-img-top"
-                                src="{{ post.featured_image.url }}">
-                            {% else %}
-                            <img class="card-img-top" src="{{ post.featured_image.url }}">
-                            {% endif %}
+                        <div class="image-container"> 
+                            <img class="img-thumbnail" alt="Responsive image" src="{{ post.featured_image.url }}">                          
                             <div class="image-flash">
                                 <p class="author">Author: {{ post.author }}</p>
                             </div>
