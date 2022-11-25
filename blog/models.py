@@ -4,6 +4,10 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager,self).get_queryset().filter(status=1)
+
 
 class Post(models.Model):
     # Model representing a Post
@@ -17,6 +21,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
+    category = models.ManyToManyField('Category', related_name="posts")
+    objects = models.Manager()
+    published = PublishedManager()
 
     class Meta:
         ordering = ["-created_on"]

@@ -30,9 +30,9 @@ body {
     background-color: transparent;
 }
 
-/* .image-container {
+.image-container {
     position: relative;
-} */
+} 
 
 .image-flash {
     position: absolute;
