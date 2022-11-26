@@ -9,12 +9,13 @@
                         <div class="column is-8 is-offset-2">
                             {% for post in posts %}
                                 <div class="content is-medium">
-                                    <a href="#">
+                                    <a href="{% url 'post_detail' post.slug %}">
                                         <h2 class="subtitle is-4">{{ post.created_on|timesince }} ago</h2>
                                         <h1 class="title">{{ post.title }}</h1>
                                         <p>{{ post.excerpt | safe }}</p>
                                     </a>
                                 </div>
+
                             {% empty %}
                                 <div class="content">
                                     <p>There is no posts in this category...</p>
