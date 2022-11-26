@@ -1,32 +1,22 @@
-from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
+from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Post, Category
 from .forms import CommentForm, PostForm
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.http import HttpResponse, HttpResponseRedirect
+
 
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
-
-
-def category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
-    posts = category.posts.filter(status=1)
-    # posts = Post.published.all()
-
-    return render(request, 'category.html', {'category': category, 'posts': posts})
-
-
-def search(request):
-    # Define a function for search query
-    query = request.GET.get('query', '')
-
-    posts = Post.objects.filter(status=Post.ACTIVE).filter(Q(title__icontains=query) | Q(intro__icontains=query) | Q(body__icontains=query))
-
-    return render(request, 'blog/search.html', {'posts': posts, 'query': query})
 
 
 class PostDetail(View):
@@ -83,7 +73,6 @@ class PostDetail(View):
         )  
 
 
-
 class PostLike(View):
 
     def post(self, request, slug, *args, **kwargs):
@@ -97,25 +86,47 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class PostForm(View):
+def category(request, slug):
+    # Define a function for post category
+    category = get_object_or_404(Category, slug=slug)
+    posts = category.posts.filter(status=1)
 
-    def blog_post(request):
-        post_form = PostForm()
-        if request.method == 'POST':
-            post_form = PostForm(request.POST)
-            if post_form.is_valid():
-                post = Post(
-                    title=post_form.cleaned_data["title"],
-                    author=post_form.cleaned_data["author"],
-                    content=post_form.cleaned_data["content"],
-                )
-                post.save()
+    return render(request, 'category.html', {'category': category, 'posts': posts})
 
-        context = {
-            "post_form":post_form,
-        }
 
-        args= {}
-        args['post_form']= post_form
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('home')
 
-        return render(request, "post_detail.html", args)
+    
+
+
+class PostCreateView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            "create_post.html",
+            {
+                "post_form": PostForm()
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            post_form.instance.slug = slugify(post_form.instance.title)
+            email = request.user.email
+            post_form.instance.author  = User.objects.get(email = email)
+            post_form.instance.status = 1
+            post_form.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return render(
+                request,
+                "create_post.html",
+                {
+                    "post_form": PostForm()
+                },
+            )

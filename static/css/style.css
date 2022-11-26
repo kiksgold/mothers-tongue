@@ -13,8 +13,8 @@ body {
     font-weight: 300;
 }
 
-.light-bg {
-    background-color: #fff;
+.navbar-light{
+    background-color: #e3f2fd
 }
 
 .dark-bg {

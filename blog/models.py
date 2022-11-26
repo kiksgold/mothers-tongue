@@ -4,10 +4,6 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super(PublishedManager,self).get_queryset().filter(status=1)
-
 
 class Post(models.Model):
     # Model representing a Post
@@ -22,8 +18,6 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
     category = models.ManyToManyField('Category', related_name="posts")
-    objects = models.Manager()
-    published = PublishedManager()
 
     class Meta:
         ordering = ["-created_on"]
@@ -35,6 +29,19 @@ class Post(models.Model):
     def number_of_likes(self):
         # Returns the number of likes on a post
         return self.likes.count()
+
+    def get_fields(self):
+        # Create a list of label/value pairs for columns
+        return [(field.verbose_name, field.value_from_object(self))
+                
+            if field.verbose_name != 'post'
+                
+            else
+                (field.verbose_name, 
+                Post.objects.get(pk=field.value_from_object(self)).name)
+                
+            for field in self.__class__._meta.fields[1:]
+        ]
 
 
 class Comment(models.Model):

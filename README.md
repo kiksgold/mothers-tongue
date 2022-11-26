@@ -1,18 +1,17 @@
 # Mother's Tongue Blog
 Mother's Tongue is a community blog application that was built for young learners who is seeking to improve their knowledge of yoruba language.
-
- to read and learn in your
-This project is focused on on a website that teaches kids between the ages of 3-15years on how to read and speak the indigenous Yoruba Language. Our website is built for parents, guardians, children and schools that are interested in sustaining the indigenous language.
-
-<p> The users will find all relevant information about the Yoruba Language club; our offerings, meeting times, and a sign up form. </p>
+The blog application consists of posts with series of subjects or topics that are explained for users in yoruba.
+<p> To intereact with the post, users will have to signup to enable them to drop their comments and like any post. </p>
+<p> Users can also create post, read comments update and delete post </p>
+<p> The users will find links to the application below. </p>
 <p> The idea behind the project is to be able to sustain the yoruba language for generations to come. </p>
-https://kiksgold.github.io/Yoruba-language-club/
+https://mothers-tongue.herokuapp.com/
 
 ![Image Here](./docs/features/amiresponsive.png)
 
 ## Our Main goal:
 <ul>
-<li> to sustain the indigenous yoruba langauage
+<li> to build a community of indigenous yoruba learners and tutor
 <li> to support parents, guardians and schools that wants their kids to learn the language.
 <li> to be accessible to our target audience in their various locations.
 </ul>
@@ -25,7 +24,7 @@ https://kiksgold.github.io/Yoruba-language-club/
 </ul>
 
 ### Target Audience:
-Our website is targeted at young parents, guardians who would like their kids to learn the yoruba language.
+Our application is targeted at young learners who can interact within the community 
 
 #### User Story:
 <ul>
@@ -50,9 +49,8 @@ Our website is targeted at young parents, guardians who would like their kids to
 <li> Navigation
     <ul>
     <li> This features at the top of the page, it shows the club name at the left corner: Yoruba Language Club that links to the top of the page.
-    <li> The other navigation links are to the right: Home, About us and Sign up. The home is the landing page, the about us and sign up links to another pages set up for About us and Sign up Form.
-    <li> The navigation tells the user the name of the club and website and makes the differnt pages easy to find.
-    <li> Users can easily navigate back to the main page from the About us page and sign up page.
+    <li> The other navigation links for the Home, Login, Sign up and Sign out. The home is the landing page, The sign up form would require the users to register so they can interact with the community.
+    <li> Users can easily interact with the blog application once they sign up.
     </ul> 
 
 ![Image Here](./docs/features/navigation.png)
@@ -77,7 +75,7 @@ Our website is targeted at young parents, guardians who would like their kids to
 
 <li> The Sign up Form
     <ul>
-    <li> it allows users to enroll and join our club
+    <li> it allows users to register on the blog application
     </ul>
 
 ![Image Here](./docs/features/signupform.png)
@@ -128,30 +126,45 @@ The major challenge that I experienced was media screen responsiveness.
 
 ## Technology Used
 <ul>
-<li> Balsamiq Wireframes: this was used to originate the idea, the mainframes for this project to have a better picture of the end project.</li>
+
 <li> HTML: we used this to build all the webpage for this website. </li>
 <li> CSS: this was used to style our various pages. </li>
 <li> Gitpod: is an online IDE for GitHub and GitLab that launches ready-to-code dev environments for any project with a single click. www.gitpod.io www.gitpod.io </li>
 <li> Github: provides hosting for software development version control using Git. www.github.com </li>
 <li> Chrome Dev Tool: this was used extensively to test debug my code. </li>
 <li> W3C Markup validation service: it was used to test my html and css codes for validation. https://validator.w3.org/ </li>
+<li> Bootsrap 5.0</li>
+<li> Django 3.8</li>
+<li> Psycopg database</li>
+<li> manage.py</li>
+<li> Fontawesome </li>
 </ul>
 
 ## Deployment
 The site was deployed to GitHub Page. The following steps were taken for deployment:
 <ul>
-<li> I created a repository on mygithub </li>
-<li> I have saved, commited and pushed every changes to github.</li>
-<li>In the github repository I navigated to the settings tab </li> 
-<li> I used the drop-down menu to select master branch as a publishing source and saved it. </li>
-<li> Refreshed the github page, and a link was provided to the completed website https://kiksgold.github.io/Yoruba-language-club/ </li>
+<li> Steps for Deployment
+</li>
+    <ul>
+    <li>Create a new app on Heroku
+    </li>
+    <li>Set my config vars to store my sensitive data
+    </li>
+    <li>Create the database on Elephant SQL
+    </li>
+    <li>Set debug to False in settings.py
+    </li>
+    <li>Click on deploy
+    </li>
+    </ul>
 </ul>
 
 ## Credit
 <ul>
-<li> ReadMe template from The coding club. </li>
-<li> The Love Running Project</li>
-<li> Fontawesome </li>
+<li> codestar walkthrough </li>
+<li> Django Central</li>
+
+<li> Tutor support </li>
 <li> W3schools for my code referencing https://www.w3schools.com/howto/ </li>
 <li> Adobe Stock for all my images https://stock.adobe.com/ng/Libraries </li>
 </ul>
