@@ -4,7 +4,7 @@ The blog application consists of posts with series of subjects or topics that ar
 <p> To intereact with the post, users will have to signup to enable them to drop their comments and like any post. </p>
 <p> Users can also create post, read comments update and delete post </p>
 <p> The users will find links to the application below. </p>
-<p> The idea behind the project is to be able to sustain the yoruba language for generations to come. </p>
+<p> The idea behind the project is to build a community of nartive speakers of the language. </p>
 https://mothers-tongue.herokuapp.com/
 
 ![Image Here](./docs/features/amiresponsive.png)
@@ -110,13 +110,14 @@ Our application is targeted at young learners who can interact within the commun
 <li> I confirm that this project is responsive, looks good and functions on all standard screen sizes using devtools device toolbar. </li>
 <li> I have used the http://ami.responsivedesign.is/ website to check the render on different sceens. </li>
 <li> I have tested that the navigation, home, login, logout, signup, create post button are all readable and easy to understand. </li>
-<li> The sign up form works, it requires entries in every field and will only accept an email in the email field, the submit button also works. </li>
+<li> All the forms work perfectly well. </li>
 </ul>
 
 ## Challenges
 The major challenge that I experienced was timing.
 <ul>
 <li> Timing </li>
+<li> I'm unable to create the update post function </li>
 </ul>
 
 ## Validation
@@ -133,8 +134,6 @@ The major challenge that I experienced was timing.
 <ul>
 <li> I confirmed that the colors and fonts chosen are easy to read and accessible by running it through lighthouse in devtools. </li>
 </ul>
-
-![Image Here](./docs/features/lighthouse.png)
 </ul>
 
 ## Technology Used
