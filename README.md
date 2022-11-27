@@ -26,68 +26,82 @@ https://mothers-tongue.herokuapp.com/
 ### Target Audience:
 Our application is targeted at young learners who can interact within the community 
 
-#### User Story:
+## User Story
 <ul>
-<li> The home page shows an image of kids studying, this provides potential users that the language club is for kids. </li>
-<li> users are able to navigate our through our webpages. </li>
-<li> Users get more info about our club days. </li>
-<li> Users get more info about what we offer. </li>
-<li> There is list of our social media icons that takes users to our various social media pages. </li>
-<li> Our sign up page, is a call to action for users to enrol their kids in our club. </li>
-</ul>
+<li> Account Registeration
 
-## Wireframes
-![Image Here](./docs/wireframes/homepage.png)
-![Image Here](./docs/wireframes/aboutus.png)
-![Image Here](./docs/wireframes/signup.png)
-![Image Here](./docs/wireframes/mobile_home.png)
-![Image Here](./docs/wireframes/mobile_aboutus.png)
-![Image Here](./docs/wireframes/mobile_signup.png)
+    As a Site User I can register an account so that I can interact with the blog
 
-## Features
-<ul>
-<li> Navigation
-    <ul>
-    <li> This features at the top of the page, it shows the club name at the left corner: Yoruba Language Club that links to the top of the page.
-    <li> The other navigation links for the Home, Login, Sign up and Sign out. The home is the landing page, The sign up form would require the users to register so they can interact with the community.
-    <li> Users can easily interact with the blog application once they sign up.
-    </ul> 
+![Image Here](./docs/features/signup.png)
 
-![Image Here](./docs/features/navigation.png)
+<li> Login
 
-<li> The Header
-    <ul>
-    <li> The header shows the name of the club using a very dark shade of lemon color.
-    <li> It explains the age brackets for the kids 3- 15years.
-    <li> It also features a provoking thought on sustaing the yoruba club which also has an embedded link to the About us page.
-    <li> The section provides users with clear information about what the site is and who the club is for.
-    </ul>
+    As a Site User I can sign into an existing account so that I can interact with the blog
 
-![Image Here](./docs/features/header.png)
+![Image Here](./docs/features/Login.png)
 
-<li> The About us
-    <ul> 
-    <li> The About us section gives details about what the club offers, their members and the club's schedule.
-    <li> This section shows the user the important information they need to know about the club.
-    </ul>
+<li> Logout
 
-![Image Here](./docs/features/aboutusinfo.png)    
+    As a Site User I can signout of an account so that I can stop interacting with the blog
 
-<li> The Sign up Form
-    <ul>
-    <li> it allows users to register on the blog application
-    </ul>
+![Image Here](./docs/features/Logout.png)    
 
-![Image Here](./docs/features/signupform.png)
+<li> Create a post
+
+    As a Site User I can create post, so that I can upload blog posts. 
+    
+
+![Image Here](./docs/features/createapost.png)
+
+<li> Retrieve a post
+
+    As a Site User I can retrieve post, so that I can view a list of posts.
+
+![Image Here](./docs/features/retrievepost.png)
+
+<li> Update a post
+
+    As a Site User I can update post, so that I can view the post list.
+
+![Image Here](./docs/features/updatebutton.png)
+
+<li> Delete a post
+    
+    As a Site User I can delete post, so that I can delete unwanted blog post.  
+
+![Image Here](./docs/features/updatebutton.png)
+
+<li> Like a post
+
+    As a Site User I can like a post so that I can interact with the content 
+
+![Image Here](./docs/features/likeapost.png)
+
+<li> Unlike a post
+    
+    As a Site User I can unlike a post so that I can interact with the content 
+
+![Image Here](./docs/features/unlikeapost.png)
+
+<li> Leave a comment
+    As a Site User I can leave comments on a post so that I can be involved in the conversation
+
+![Image Here](./docs/features/leaveacomment.png)
+
+<li> View category post
+
+    As a Site User I can view category post, so that I can see similar posts to read. 
+
+![Image Here](./docs/features/categorylink.png)
 
 <li> Social media links
     <ul> 
-    <li> This section has the social media icons, so users can find more information about the yoruba club on facebook, instagram, twitter and youtube.
+    <li> This section has the social media icons, so users can find more information about the blog on facebook, instagram, twitter and youtube.
     <li> The icons when click on takes the user to the respective url.
-    <li> It gives the users ability to find and contact the club if they need to.
+    <li> It gives the users ability to users to folluw us on all our socia media links.
     </ul>
 
-![Image Here](./docs/features/socialnetworks.png)
+![Image Here](./docs/features/sociallinks.png)
 </ul>
 
 ## Testing
@@ -95,15 +109,14 @@ Our application is targeted at young learners who can interact within the commun
 <li> The page works in different browser; Chrome, Safari, and my mobile device (iPhone11). </li>
 <li> I confirm that this project is responsive, looks good and functions on all standard screen sizes using devtools device toolbar. </li>
 <li> I have used the http://ami.responsivedesign.is/ website to check the render on different sceens. </li>
-<li> I have tested that the navigation, header, about us, sign up text are all readable and easy to understand. </li>
+<li> I have tested that the navigation, home, login, logout, signup, create post button are all readable and easy to understand. </li>
 <li> The sign up form works, it requires entries in every field and will only accept an email in the email field, the submit button also works. </li>
 </ul>
 
 ## Challenges
-The major challenge that I experienced was media screen responsiveness.
+The major challenge that I experienced was timing.
 <ul>
-<li> I was able to get support from Tutor me and my mentor </li>
-<li> I also used chrome dev tools to carefully choose devices to work on my 3pages and their alignment. </li>
+<li> Timing </li>
 </ul>
 
 ## Validation
@@ -132,12 +145,13 @@ The major challenge that I experienced was media screen responsiveness.
 <li> Gitpod: is an online IDE for GitHub and GitLab that launches ready-to-code dev environments for any project with a single click. www.gitpod.io www.gitpod.io </li>
 <li> Github: provides hosting for software development version control using Git. www.github.com </li>
 <li> Chrome Dev Tool: this was used extensively to test debug my code. </li>
-<li> W3C Markup validation service: it was used to test my html and css codes for validation. https://validator.w3.org/ </li>
 <li> Bootsrap 5.0</li>
 <li> Django 3.8</li>
 <li> Psycopg database</li>
 <li> manage.py</li>
 <li> Fontawesome </li>
+<li> Cloudinary Storage </li>
+<li> ElephantSQL </li>
 </ul>
 
 ## Deployment
@@ -163,7 +177,7 @@ The site was deployed to GitHub Page. The following steps were taken for deploym
 <ul>
 <li> codestar walkthrough </li>
 <li> Django Central</li>
-
+<li> Django Central</li>
 <li> Tutor support </li>
 <li> W3schools for my code referencing https://www.w3schools.com/howto/ </li>
 <li> Adobe Stock for all my images https://stock.adobe.com/ng/Libraries </li>

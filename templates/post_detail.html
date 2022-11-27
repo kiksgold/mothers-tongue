@@ -4,9 +4,11 @@
 
 {% load crispy_forms_tags %}
 
+
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
+            
             <div class="col-md-6 masthead-text">
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
@@ -16,7 +18,7 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                <img src="{{ post.featured_image.url }}" width="100%">
                 {% else %}
                 <img src="{{ post.featured_image.url }}" width="100%">
                 {% endif %}
@@ -24,7 +26,42 @@
         </div>
     </div>
 </div>
+<div class="m-3 float-end">
+    {% if user.is_authenticated and user.id == post.author.id %}
+        <form class="d-inline" action="{% url 'update_post' post.id %}" method="POST">
+            {% csrf_token %}
 
+            <button class="btn btn-primary" type="submit" value="submit">Update</button>
+        </form>
+        <form class="d-inline" action="{% url 'delete_post' post.id %}" method="POST">
+            {% csrf_token %}
+                        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        This action is irreversible. <br/>Are you sure you want to Delete? 
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-danger" type="submit" value="submit">Delete</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+        </form>
+        {% endif %}
+</div>
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
@@ -34,13 +71,6 @@
                 <p class="card-text ">
                     {{ post.content | safe }}
                 </p>
-                {% if user.is_authenticated and user.id == post.author.id %}
-                <form class="d-inline" action="{% url 'delete_post' post.id %}" method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" value="submit">Delete</button>
-                </form>
-                {% endif %}
                 {% for category in post.category.all %}
                 <p><small>Category: <a href="{% url 'category' category.slug %}">{{ category.title }}</a></small></p>
                 {% endfor %}
@@ -49,6 +79,7 @@
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
+                             <!-- We want an authenticated user to like and unlike a post -->
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
@@ -113,7 +144,7 @@
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+                <!-- We want an authenticated user to comment and the comment goes for approval -->
                 {% if user.is_authenticated %}
                 {% if commented %}
                 <div class="container">

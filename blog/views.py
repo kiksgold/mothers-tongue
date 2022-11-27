@@ -2,9 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Post, Category
 from .forms import CommentForm, PostForm
@@ -13,6 +11,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 
 class PostList(generic.ListView):
+    # A class based view to see the list of posts in the app
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
@@ -20,7 +19,7 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
-
+    # Define a get function to view a post in detail
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -42,7 +41,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-
+        # Define a post function to interact with a post
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -70,11 +69,11 @@ class PostDetail(View):
                 "comment_form": comment_form,
                 "liked": liked
             },
-        )  
+        ) 
 
 
 class PostLike(View):
-
+    # Define a function for post like and unlike
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
 
@@ -95,14 +94,20 @@ def category(request, slug):
 
 
 class PostDeleteView(DeleteView):
+    # Define a function for authenticated user to delete post
     model = Post
     success_url = reverse_lazy('home')
 
-    
+
+class PostUpdateView(UpdateView):
+    # Define a function for authenticated user to delete post
+    model = Post
+    fields = ['title', 'content']
+    success_url = reverse_lazy('home')
 
 
 class PostCreateView(View):
-
+    # Define a function for authenticated user to create post
     def get(self, request, *args, **kwargs):
         return render(
             request,

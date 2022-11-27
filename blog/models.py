@@ -18,6 +18,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
     category = models.ManyToManyField('Category', related_name="posts")
+    
+
 
     class Meta:
         ordering = ["-created_on"]
@@ -33,20 +35,21 @@ class Post(models.Model):
     def get_fields(self):
         # Create a list of label/value pairs for columns
         return [(field.verbose_name, field.value_from_object(self))
-                
+
             if field.verbose_name != 'post'
-                
+
             else
-                (field.verbose_name, 
+                (field.verbose_name,
                 Post.objects.get(pk=field.value_from_object(self)).name)
-                
+
             for field in self.__class__._meta.fields[1:]
-        ]
+                ]
 
 
 class Comment(models.Model):
     # Model representing a Comment
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+    related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()

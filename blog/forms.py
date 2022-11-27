@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'content',)
+        fields = ('title', 'content', 'featured_image')
 
     title = forms.CharField(
         max_length=255,
