@@ -118,6 +118,7 @@ The major challenge that I experienced was timing.
 <ul>
 <li> Timing </li>
 <li> I'm unable to create the update post function </li>
+<li> Users are unable to upload images when they create post </li>
 </ul>
 
 ## Validation
