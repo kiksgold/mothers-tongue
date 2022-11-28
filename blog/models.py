@@ -20,7 +20,6 @@ class Post(models.Model):
     category = models.ManyToManyField('Category', related_name="posts")
     
 
-
     class Meta:
         ordering = ["-created_on"]
 

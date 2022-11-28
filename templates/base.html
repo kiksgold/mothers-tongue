@@ -44,10 +44,7 @@
                 <div class="collapse navbar-collapse text-end" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                        </li>    
+                        {% if user.is_authenticated %}   
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome {{ user.username }}</a>
@@ -55,6 +52,9 @@
                                 <li><a class="dropdown-item" href="{% url 'create_post' %}">Create Post</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li> 
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -93,49 +93,26 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-dark" style="position: fixed;bottom: 0;width: 100%;">
-        <div class="container">
-            <p class="m-0 text-center text-white">Made by Mother's Tongue Community</p>
-            <p class="m-0 text-center text-white">Follow us: 
-                <ul class="text-center">
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.facebook.com">
-                            <i class="fab fa-facebook ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">Facebook</span>                         
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.twitter.com">
-                            <i class="fab fa-twitter ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">Twitter</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.linkedin.com">
-                            <i class="fab fa-linkedin ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.pinterest.com">
-                            <i class="fab fa-pinterest ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">Pinterest</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.instagram.com">
-                            <i class="fab fa-instagram ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.youtube.com">
-                            <i class="fab fa-youtube ms-2" aria-hidden="true"></i>
-                            <span class="sr-only">Youtube</span>
-                        </a>
-                    </li>
-                </ul>
-        </div>
+    <footer class="bg-dark" style="position: fixed;bottom: 0;width: 100%;">
+        <p class="m-0 text-center text-white">Proudly by Mother's Tongue Community</p>
+        <p class="m-0 text-center text-white">Follow us: 
+            <a target="_blank" href="https://www.facebook.com">
+                <i class="fab fa-facebook-square ms-3"></i>
+                <span class="sr-only">Facebook</span>
+            </a>
+            <a target="_blank" href="https://www.twitter.com">
+                <i class="fab fa-twitter-square ms-3"></i>
+                <span class="sr-only">Twitter</span>
+            </a>
+            <a target="_blank" href="https://www.instagram.com">
+                <i class="fab fa-instagram-square ms-3"></i>
+                <span class="sr-only">Instagram</span>
+            </a>
+            <a target="_blank" href="https://www.youtube.com">
+                <i class="fab fa-youtube-square ms-3"></i>
+                <span class="sr-only">Youtube</span>
+            </a>
+            </p>
     </footer>
     <script>
         setTimeout(function () {
