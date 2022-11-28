@@ -102,8 +102,26 @@ class PostDeleteView(DeleteView):
 class PostUpdateView(UpdateView):
     # Define a function for authenticated user to delete post
     model = Post
-    fields = ['title', 'content']
+    # fields = ['title', 'content']
     success_url = reverse_lazy('home')
+    form_class = PostForm
+    template_name = 'edit_post.html'
+
+    def get_initial(self):
+        initial = super(PostUpdateView, self).get_initial()
+
+        # retrieve current object
+        post_object = self.get_object()
+
+        initial['title'] = post_object.title
+        initial['content'] = post_object.content
+        
+        return initial
+
+    def get_object(self, *args, **kwargs):
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+
+        return post
 
 
 class PostCreateView(View):
